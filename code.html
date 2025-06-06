@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>صفحة هبوط احترافية - حملتك التسويقية</title>
+<meta name="description" content="صفحة هبوط احترافية متجاوبة مع نموذج متعدد الخطوات، تكامل مع CRM وأدوات التتبع، وأداء عالي." />
+<meta name="author" content="مطور" />
+<meta name="keywords" content="صفحة هبوط, تسويق, نموذج, CRM, تتبع, SEO, Performance, العربية" />
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="صفحة هبوط احترافية - حملتك التسويقية" />
+<meta property="og:description" content="صفحة هبوط احترافية متجاوبة مع نموذج متعدد الخطوات، تكامل مع CRM وأدوات التتبع، وأداء عالي." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://yourdomain.example/assets/og-image.png" />
+<meta property="og:url" content="https://yourdomain.example" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="صفحة هبوط احترافية - حملتك التسويقية" />
+<meta name="twitter:description" content="صفحة هبوط احترافية متجاوبة مع نموذج متعدد الخطوات، تكامل مع CRM وأدوات التتبع، وأداء عالي." />
+<meta name="twitter:image" content="https://yourdomain.example/assets/og-image.png" />
+
+<style>
+:root {
+  --color-primary: #111827;
+  --color-secondary: #2563eb;
+  --color-accent: #60a5fa;
+  --color-background: #ffffff;
+  --color-text: #6b7280;
+  --color-text-dark: #111827;
+  --radius: 0.75rem;
+  --shadow-light: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-hover: 0 8px 12px rgba(37,99,235,0.2);
+  --font-family: "Cairo", "Noto Kufi Arabic", Tahoma, sans-serif;
+  --transition-speed: 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background: var(--color-background);
+  color: var(--color-text);
+  direction: rtl;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+a:hover,
+a:focus {
+  color: var(--color-accent);
+  outline: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background: var(--color-background);
+  box-shadow: var(--shadow-light);
+  z-index: 1000;
+}
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: var(--color-primary);
+  user-select: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  align-items: center;
+}
+
+.nav-links a {
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  background-color: var(--color-secondary);
+  color: #fff;
+  outline: none;
+}
+
+/* Sections styling */
+section {
+  padding-top: 4rem;
+  padding-bottom: 5rem;
+}
+
+.hero {
+  background: var(--color-background);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+  user-select: text;
+}
+
+.hero h1 {
+  font-weight: 800;
+  font-size: clamp(3rem, 5vw, 4rem);
+  color: var(--color-primary);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  user-select: text;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: var(--color-text);
+  margin-bottom: 3rem;
+  user-select: text;
+  font-weight: 500;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-primary {
+  font-weight: 700;
+  font-size: 1.125rem;
+  background-color: var(--color-secondary);
+  color: #fff;
+  padding: 0.75rem 2.5rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.6);
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+  user-select: none;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #1e40af;
+  outline: none;
+  transform: scale(1.05);
+}
+
+/* Features grid */
+.features {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 2rem;
+  color: var(--color-text-dark);
+  user-select: text;
+}
+
+.feature-card {
+  background: #f9fafb;
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  box-shadow: var(--shadow-light);
+  text-align: center;
+  transition: box-shadow var(--transition-speed);
+}
+
+.feature-card:hover,
+.feature-card:focus-within {
+  box-shadow: var(--shadow-hover);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  color: var(--color-secondary);
+  margin-bottom: 1rem;
+}
+
+.feature-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.feature-desc {
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+/* Testimonials */
+.testimonials {
+  background: #f0f4ff;
+  color: var(--color-primary);
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.testimonial {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-light);
+  padding: 2rem 2.5rem;
+  font-style: italic;
+  position: relative;
+  user-select: text;
+  transition: box-shadow var(--transition-speed);
+}
+
+.testimonial:hover,
+.testimonial:focus-within {
+  box-shadow: var(--shadow-hover);
+}
+
+.testimonial::before {
+  content: "“";
+  font-size: 3rem;
+  color: var(--color-secondary);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  opacity: 0.2;
+  user-select:none;
+}
+
+.testimonial p {
+  margin: 0 0 1rem 0;
+}
+
+.testimonial-footer {
+  font-weight: 700;
+  color: var(--color-secondary);
+  font-size: 1rem;
+  text-align: left;
+}
+
+/* Call to Action */
+.cta {
+  background: var(--color-secondary);
+  color: white;
+  text-align: center;
+  padding: 4rem 1rem;
+  user-select:none;
+}
+
+.cta h2 {
+  font-weight: 800;
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.cta button {
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 1rem 3rem;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  background: white;
+  color: var(--color-secondary);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  user-select:none;
+}
+
+.cta button:hover,
+.cta button:focus {
+  background: #e0e7ff;
+  outline: none;
+}
+
+/* Footer */
+footer {
+  background: #f9fafb;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  text-align: center;
+  user-select:none;
+}
+
+/* Multi-Step Form styles */
+#form-section {
+  max-width: 600px;
+  margin: 2rem auto 6rem auto;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-light);
+  padding: 2rem 2rem 3rem 2rem;
+  user-select: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-step {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-step.active {
+  display: flex;
+}
+
+input, select {
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #d1d5db;
+  font-family: var(--font-family);
+  transition: border-color var(--transition-speed);
+  direction: rtl;
+}
+
+input:focus, select:focus {
+  border-color: var(--color-secondary);
+  outline: none;
+}
+
+label {
+  font-weight: 600;
+  color: var(--color-primary);
+  user-select: text;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+button {
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+  user-select:none;
+}
+
+button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+button.next-btn {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+button.next-btn:hover:not(:disabled),
+button.next-btn:focus:not(:disabled) {
+  background-color: #1e40af;
+  transform: scale(1.05);
+  outline: none;
+}
+
+button.back-btn {
+  background-color: #e5e7eb;
+  color: var(--color-primary);
+}
+
+button.back-btn:hover,
+button.back-btn:focus {
+  background-color: #d1d5db;
+  outline: none;
+  transform: scale(1.05);
+}
+
+/* Error and success messages */
+.message {
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+}
+
+.message.error {
+  color: #b91c1c;
+  background-color: #fee2e2;
+}
+
+.message.success {
+  color: #065f46;
+  background-color: #d1fae5;
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-links {
+    margin-top: 0.5rem;
+  }
+  .features {
+    grid-template-columns: 1fr !important;
+  }
+  .hero {
+    padding: 3rem 1rem;
+  }
+  .cta button {
+    width: 100%;
+  }
+}
+
+/* Countdown timer styling */
+#countdown {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-secondary);
+  margin-top: 1rem;
+  user-select: none;
+  letter-spacing: 0.1em;
+  font-family: monospace;
+  text-align: center;
+}
+
+/* Tooltip for city detection */
+#city-output {
+  margin-top: 0.5rem;
+  color: var(--color-primary);
+  font-size: 1rem;
+  user-select: text;
+  text-align: center;
+}
+
+/* Lazy loading images */
+img {
+  max-width: 100%;
+  border-radius: var(--radius);
+  display: block;
+  margin: 0 auto;
+  box-shadow: var(--shadow-light);
+  transition: transform var(--transition-speed);
+}
+img:hover,
+img:focus {
+  transform: scale(1.02);
+  outline: none;
+}
+
+/* Simple fade-in animation */
+.fade-in {
+  animation: fadein 0.6s ease forwards;
+  opacity: 0;
+}
+@keyframes fadein {
+  to {
+    opacity: 1;
+  }
+}
+</style>
+
+<!-- Google Analytics (placeholder) -->
+<script>
+  // Initialize Google Analytics with 5 event tracking points
+  // Replace 'GA_MEASUREMENT_ID' with your actual GA4 ID
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID');
+
+  // Helper functions for GA event tracking
+  function trackEvent(eventName, eventParams) {
+    if(window.gtag) {
+      gtag('event', eventName, eventParams);
+    }
+  }
+</script>
+
+<!-- Facebook Pixel (placeholder) -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){
+  n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'FB_PIXEL_ID'); // Replace with your Facebook Pixel ID
+  fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=FB_PIXEL_ID&ev=PageView&noscript=1" />
+</noscript>
+
+<!-- Voluum Tracking placeholder -->
+<script>
+  // Optional Voluum tracking can be configured here if needed
+</script>
+
+</head>
+<body>
+
+<header role="banner">
+  <nav aria-label="التنقل الرئيسي">
+    <div class="logo" tabindex="0" aria-label="شعار الموقع">شعار موقعك</div>
+    <div class="nav-links">
+      <a href="#hero" tabindex="0">الرئيسية</a>
+      <a href="#features" tabindex="0">المميزات</a>
+      <a href="#testimonials" tabindex="0">آراء العملاء</a>
+      <a href="#form-section" tabindex="0" class="btn-primary" style="padding:0.5rem 1.25rem; font-size:0.9rem;">ابدأ الآن</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <section id="hero" class="hero" role="region" aria-labelledby="hero-title">
+    <h1 id="hero-title">صفحة هبوط احترافية لحملتك التسويقية</h1>
+    <p>نمهد طريق نجاحك مع تصميم جذاب، أداء عالي، ونموذج متقدم لجمع بيانات العملاء.</p>
+    <button class="btn-primary" id="btn-start-form" aria-label="ابدأ النموذج">ابدأ النموذج</button>
+    <div id="countdown" aria-live="polite" aria-atomic="true" aria-label="عداد تنازلي"></div>
+    <div id="city-output" aria-live="polite" aria-atomic="true"></div>
+  </section>
+
+  <section id="features" class="features" role="region" aria-labelledby="features-title">
+    <h2 id="features-title" style="user-select:text; margin-bottom:2rem; text-align:center; font-weight:800; font-size:2rem; color: var(--color-primary);">المميزات الرئيسية</h2>
+    <article class="feature-card" tabindex="0">
+      <div class="feature-icon" aria-hidden="true">⚡</div>
+      <h3 class="feature-title">أداء عالي</h3>
+      <p class="feature-desc">تم تحسين الصفحة للتحميل في أقل من 3 ثواني مع تصنيف PageSpeed Insights يزيد عن 90.</p>
+    </article>
+    <article class="feature-card" tabindex="0">
+      <div class="feature-icon" aria-hidden="true">🛠️</div>
+      <h3 class="feature-title">نموذج متعدد الخطوات</h3>
+      <p class="feature-desc">نماذج متقدمة مع حفظ مؤقت عبر Session Storage والتحقق من صحة البيانات.</p>
+    </article>
+    <article class="feature-card" tabindex="0">
+      <div class="feature-icon" aria-hidden="true">🔗</div>
+      <h3 class="feature-title">تكامل CRM و أدوات التتبع</h3>
+      <p class="feature-desc">تكامل API مع نظام CRM، وGoogle Analytics، Facebook Pixel، إلخ.</p>
+    </article>
+    <article class="feature-card" tabindex="0">
+      <div class="feature-icon" aria-hidden="true">📱</div>
+      <h3 class="feature-title">تصميم متجاوب</h3>
+      <p class="feature-desc">تصميم متوافق مع جميع الأجهزة، مع دعم كامل للغة العربية (RTL).</p>
+    </article>
+  </section>
+
+  <section id="testimonials" class="testimonials" role="region" aria-labelledby="testimonials-title">
+    <h2 id="testimonials-title" style="text-align:center; font-weight:800; font-size:2rem; margin-bottom:3rem; user-select:text;">آراء العملاء</h2>
+    <blockquote class="testimonial" tabindex="0">
+      <p>“من خلال هذه الصفحة، انتقلنا إلى مستوى آخر في حملاتنا، وارتفعت نسبة التحويل بشكل ملحوظ.”</p>
+      <footer class="testimonial-footer">- محمد أحمد</footer>
+    </blockquote>
+    <blockquote class="testimonial" tabindex="0">
+      <p>“سهولة الاستخدام والتكامل مع نظام CRM جعل العمل سلسًا جدًا.”</p>
+      <footer class="testimonial-footer">- ليلى محمود</footer>
+    </blockquote>
+    <blockquote class="testimonial" tabindex="0">
+      <p>“تصميم جميل وأداء سريع، ممتاز لكل حملاتي الإلكترونية!”</p>
+      <footer class="testimonial-footer">- سامي خالد</footer>
+    </blockquote>
+  </section>
+
+  <section id="form-section" role="region" aria-labelledby="form-title" style="display:none;">
+    <h2 id="form-title" style="text-align:center; font-weight:800; font-size:2rem; margin-bottom:2rem; user-select:text;">الاشتراك - نموذج متعدد الخطوات</h2>
+
+    <form id="multi-step-form" novalidate>
+      <!-- Step 1 -->
+      <div class="form-step active" aria-live="polite" aria-atomic="true">
+        <label for="fullName">الاسم الكامل</label>
+        <input type="text" id="fullName" name="fullName" placeholder="ادخل اسمك الكامل" required aria-required="true" />
+        <div class="message error" id="error-fullName" aria-live="assertive"></div>
+        <div class="form-buttons">
+          <button type="button" class="next-btn" id="btn-step1-next" disabled>التالي</button>
+        </div>
+      </div>
+      <!-- Step 2 -->
+      <div class="form-step" aria-live="polite" aria-atomic="true">
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required aria-required="true" />
+        <div class="message error" id="error-email" aria-live="assertive"></div>
+        <div class="form-buttons">
+          <button type="button" class="back-btn" id="btn-step2-back">السابق</button>
+          <button type="button" class="next-btn" id="btn-step2-next" disabled>التالي</button>
+        </div>
+      </div>
+      <!-- Step 3 -->
+      <div class="form-step" aria-live="polite" aria-atomic="true">
+        <label for="phone">رقم الجوال</label>
+        <input type="tel" id="phone" name="phone" placeholder="+9665XXXXXXX" pattern="^\+?\d{7,15}$" required aria-required="true" />
+        <div class="message error" id="error-phone" aria-live="assertive"></div>
+
+        <label for="city">المدينة</label>
+        <input type="text" id="city" name="city" readonly aria-readonly="true" aria-label="المدينة المكتشفة تلقائياً" />
+        <small>تم الكشف تلقائياً عن مدينتك بناءً على موقعك الجغرافي.</small>
+
+        <div class="form-buttons">
+          <button type="button" class="back-btn" id="btn-step3-back">السابق</button>
+          <button type="submit" class="next-btn" id="btn-submit" disabled>إرسال</button>
+        </div>
+        <div class="message error" id="submit-error" aria-live="assertive"></div>
+        <div class="message success" id="submit-success" aria-live="assertive"></div>
+      </div>
+    </form>
+  </section>
+
+  <section class="cta" role="region" aria-labelledby="cta-title">
+    <h2 id="cta-title">هل أنت جاهز لتبدأ حملتك؟</h2>
+    <button class="btn-primary" id="btn-start-form-2" aria-label="ابدأ النموذج">ابدأ الآن</button>
+  </section>
+
+</main>
+
+<footer role="contentinfo">
+  <p>© 2024 جميع الحقوق محفوظة.</p>
+</footer>
+
+<script>
+(() => {
+  const steps = Array.from(document.querySelectorAll('.form-step'));
+  let currentStep = 0;
+
+  // Elements
+  const btnStartFormMain = document.getElementById('btn-start-form');
+  const btnStartFormCTA = document.getElementById('btn-start-form-2');
+  const formSection = document.getElementById('form-section');
+  const form = document.getElementById('multi-step-form');
+
+  // Fields
+  const fullNameField = document.getElementById('fullName');
+  const emailField = document.getElementById('email');
+  const phoneField = document.getElementById('phone');
+  const cityField = document.getElementById('city');
+
+  // Error elements
+  const errFullName = document.getElementById('error-fullName');
+  const errEmail = document.getElementById('error-email');
+  const errPhone = document.getElementById('error-phone');
+  const submitError = document.getElementById('submit-error');
+  const submitSuccess = document.getElementById('submit-success');
+
+  // Buttons
+  const btnStep1Next = document.getElementById('btn-step1-next');
+  const btnStep2Back = document.getElementById('btn-step2-back');
+  const btnStep2Next = document.getElementById('btn-step2-next');
+  const btnStep3Back = document.getElementById('btn-step3-back');
+  const btnSubmit = document.getElementById('btn-submit');
+
+  // Show form and scroll to it
+  function showForm() {
+    formSection.style.display = 'block';
+    formSection.scrollIntoView({behavior: 'smooth'});
+    trackEventGA('form_displayed', {step: 1});
+  }
+  btnStartFormMain.addEventListener('click', showForm);
+  btnStartFormCTA.addEventListener('click', showForm);
+
+  // Form validation helpers
+  function validateFullName() {
+    const val = fullNameField.value.trim();
+    if(val.length < 3) {
+      errFullName.textContent = 'يرجى إدخال الاسم الكامل (3 أحرف على الأقل)';
+      return false;
+    }
+    errFullName.textContent = '';
+    return true;
+  }
+  function validateEmail() {
+    const val = emailField.value.trim();
+    const emailRegex = /^[\\w.-]+@[\\w.-]+\\.\\w{2,}$/;
+    if(!emailRegex.test(val)) {
+      errEmail.textContent = 'البريد الإلكتروني غير صالح';
+      return false;
+    }
+    errEmail.textContent = '';
+    return true;
+  }
+  function validatePhone() {
+    const val = phoneField.value.trim();
+    const phoneRegex = /^\\+?\\d{7,15}$/;
+    if(!phoneRegex.test(val)) {
+      errPhone.textContent = 'رقم الجوال غير صالح';
+      return false;
+    }
+    errPhone.textContent = '';
+    return true;
+  }
+
+  // Enable or disable next/submit buttons
+  function updateButtons() {
+    btnStep1Next.disabled = !validateFullName();
+    btnStep2Next.disabled = !validateEmail();
+    btnSubmit.disabled = !validatePhone();
+  }
+  fullNameField.addEventListener('input', () => {
+    validateFullName();
+    updateButtons();
+  });
+  emailField.addEventListener('input', () => {
+    validateEmail();
+    updateButtons();
+  });
+  phoneField.addEventListener('input', () => {
+    validatePhone();
+    updateButtons();
+  });
+
+  // Session Storage keys
+  const storageKey = 'landingFormData';
+
+  // Load saved data
+  function loadFormData() {
+    try {
+      const saved = sessionStorage.getItem(storageKey);
+      if(saved) {
+        const data = JSON.parse(saved);
+        if(data.fullName) fullNameField.value = data.fullName;
+        if(data.email) emailField.value = data.email;
+        if(data.phone) phoneField.value = data.phone;
+        if(data.city) cityField.value = data.city;
+      }
+    } catch(e) {
+      // Ignore errors
+    }
+  }
+  loadFormData();
+  updateButtons();
+
+  // Save data on input change
+  function saveFormData() {
+    const data = {
+      fullName: fullNameField.value,
+      email: emailField.value,
+      phone: phoneField.value,
+      city: cityField.value
+    };
+    sessionStorage.setItem(storageKey, JSON.stringify(data));
+  }
+  fullNameField.addEventListener('input', saveFormData);
+  emailField.addEventListener('input', saveFormData);
+  phoneField.addEventListener('input', saveFormData);
+
+  // Navigation buttons handlers
+  btnStep1Next.addEventListener('click', () => {
+    if(!validateFullName()) return;
+    steps[currentStep].classList.remove('active');
+    currentStep++;
+    steps[currentStep].classList.add('active');
+    trackEventGA('form_step_2_shown');
+  });
+  btnStep2Back.addEventListener('click', () => {
+    steps[currentStep].classList.remove('active');
+    currentStep--;
+    steps[currentStep].classList.add('active');
+    trackEventGA('form_step_1_shown');
+  });
+  btnStep2Next.addEventListener('click', () => {
+    if(!validateEmail()) return;
+    steps[currentStep].classList.remove('active');
+    currentStep++;
+    steps[currentStep].classList.add('active');
+    trackEventGA('form_step_3_shown');
+  });
+  btnStep3Back.addEventListener('click', () => {
+    steps[currentStep].classList.remove('active');
+    currentStep--;
+    steps[currentStep].classList.add('active');
+    trackEventGA('form_step_2_shown');
+  });
+
+  // Form submit handler
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    submitError.textContent = '';
+    submitSuccess.textContent = '';
+    if(!validatePhone()) {
+      submitError.textContent = 'تأكد من صحة رقم الجوال';
+      return;
+    }
+    // Prepare data
+    const formData = {
+      fullName: fullNameField.value.trim(),
+      email: emailField.value.trim(),
+      phone: phoneField.value.trim(),
+      city: cityField.value.trim()
+    };
+
+    // Call CRM API integration (placeholder)
+    // The actual CRM endpoint and API details are needed here
+    // Use fetch with POST and handle errors/success appropriately
+
+    // Simulate API call
+    setTimeout(() => {
+      sessionStorage.removeItem(storageKey);
+      submitSuccess.textContent = "تم إرسال بياناتك بنجاح. شكرًا لتواصلك معنا!";
+      trackEventGA('form_submitted', {method:'crm_api'});
+      fbq('track', 'Lead'); // Facebook conversion tracking
+
+      // Optionally redirect after success or reset form/steps
+      form.reset();
+      steps[currentStep].classList.remove('active');
+      currentStep = 0;
+      steps[currentStep].classList.add('active');
+      btnSubmit.disabled = true;
+      btnStep1Next.disabled = true;
+      btnStep2Next.disabled = true;
+
+    }, 1500);
+  });
+
+  // Google Analytics event tracking wrapper
+  function trackEventGA(eventName, params = {}) {
+    if(window.gtag) {
+      gtag('event', eventName, params);
+      console.debug('GA event:', eventName, params);
+    }
+  }
+
+  // City detection via IP-API free service
+  function detectCity() {
+    fetch('https://ipapi.co/json/')
+      .then(res => {
+        if(!res.ok) throw new Error('Failed to fetch city');
+        return res.json();
+      })
+      .then(data => {
+        if(data.city) {
+          cityField.value = data.city;
+          saveFormData();
+          document.getElementById('city-output').textContent = 'تم الكشف عن مدينتك: ' + data.city;
+        }
+      }).catch(() => {
+        document.getElementById('city-output').textContent = 'تعذر الكشف عن مدينتك تلقائياً.';
+      });
+  }
+  detectCity();
+
+  // Countdown timer for limited offer
+  const countdownElement = document.getElementById('countdown');
+  let countdownDuration = 3 * 24 * 60 * 60 * 1000; // 3 days in ms
+  const offerExpiresAt = new Date(Date.now() + countdownDuration);
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = offerExpiresAt - now;
+    if(diff <= 0) {
+      countdownElement.textContent = 'انتهى العرض';
+      return;
+    }
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hrs = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const secs = Math.floor((diff % (1000*60)) / 1000);
+    countdownElement.textContent = `مدة العرض المتبقية: ${days} يوم ${hrs} س ${mins} د ${secs} ث`;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Smart redirect logic (example, customize as needed)
+  // Example: إعادة التوجيه حسب دولة المستخدم
+  function smartRedirect() {
+    fetch('https://ipapi.co/json/')
+    .then(res => res.json())
+    .then(data => {
+      // سيناريو إعادة التوجيه حسب الدولة
+      if(data.country_code === 'SA') {
+        // للمستخدمين من السعودية – ابق في الصفحة
+      } else if(data.country_code === 'EG') {
+        window.location.href = 'https://yourdomain.example/egypt-offer';
+      } else {
+        // إعطاء رسالة أو تحويل عام
+      }
+    }).catch(() => {
+      // في حال عدم توفر البيانات لا تفعل شيء
+    });
+  }
+  smartRedirect();
+
+})();
+</script>
+
+<!-- Fonts from Google Fonts for Arabic support -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+
+</body>
+</html>
+
