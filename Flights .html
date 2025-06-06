@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flight & Hotel Booking with Stripe Payment</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+<!-- Stripe.js CDN -->
+<script src="https://js.stripe.com/v3/"></script>
+
+<style>
+  :root {
+    --color-bg: #ffffff;
+    --color-text-base: #374151;
+    --color-text-muted: #6b7280;
+    --color-primary: #5a67d8; /* Indigo 600 */
+    --color-primary-hover: #434190;
+    --color-card-bg: #f9fafb;
+    --color-shadow: rgba(0,0,0,0.05);
+    --color-shadow-hover: rgba(90,103,216, 0.3);
+
+    --font-main: 'Poppins', sans-serif;
+
+    --radius: 0.75rem;
+    --transition-duration: 0.3s;
+    --max-width: 1200px;
+  }
+
+  /* Reset & Base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    color: var(--color-text-base);
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-duration);
+  }
+  a:hover,
+  a:focus {
+    color: var(--color-primary-hover);
+    outline: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: var(--color-bg);
+    box-shadow: 0 2px 5px var(--color-shadow);
+    z-index: 1000;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    user-select: none;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    border-bottom: 2px solid var(--color-card-bg);
+  }
+  .tab {
+    flex: 1;
+    text-align: center;
+    padding: 0.75rem 0;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 3px solid transparent;
+    transition: color var(--transition-duration), border-color var(--transition-duration);
+  }
+  .tab[aria-selected="true"] {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+  .tab:hover:not([aria-selected="true"]),
+  .tab:focus-visible:not([aria-selected="true"]) {
+    color: var(--color-primary-hover);
+    outline: none;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 4rem 0 2rem 0;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .hero p {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto 2.5rem auto;
+  }
+
+  /* Forms container */
+  .form-container {
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+    background: var(--color-card-bg);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 15px var(--color-shadow);
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  label {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid #cbd5e0; /* gray-300 */
+    font-size: 1rem;
+    transition: border-color var(--transition-duration);
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="date"]:focus,
+  input[type="number"]:focus,
+  select:focus {
+    border-color: var(--color-primary);
+    outline: none;
+  }
+
+  button[type="submit"] {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color var(--transition-duration), box-shadow var(--transition-duration);
+    box-shadow: 0 5px 15px rgba(90,103,216, 0.5);
+    user-select: none;
+  }
+  button[type="submit"]:hover,
+  button[type="submit"]:focus {
+    background-color: var(--color-primary-hover);
+    box-shadow: 0 8px 24px var(--color-shadow-hover);
+    outline: none;
+  }
+
+  /* Payment status message */
+  #paymentMessage {
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+  #paymentMessage.success {
+    color: green;
+  }
+  #paymentMessage.error {
+    color: red;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .hero h1 {
+      font-size: 2rem;
+      padding: 0 1rem;
+    }
+    .hero p {
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+    .form-container {
+      padding: 1.5rem 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="container" role="banner">
+    <nav aria-label="Primary navigation">
+      <div class="logo" tabindex="0">AirHotel</div>
+      <div role="tablist" aria-label="Booking type tabs" class="tabs">
+        <button role="tab" aria-selected="true" aria-controls="flight-panel" id="tab-flight" class="tab" tabindex="0">Flights</button>
+        <button role="tab" aria-selected="false" aria-controls="hotel-panel" id="tab-hotel" class="tab" tabindex="-1">Hotels</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-label="Hero Section">
+    <div class="container">
+      <h1>Book Your Flights & Hotels Easily</h1>
+      <p>Your trusted platform for seamless travel booking experience with safe payments.</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <div id="flight-panel" role="tabpanel" tabindex="0">
+      <div class="form-container">
+        <h2>Flight Booking</h2>
+        <form id="flightForm" aria-label="Flight booking form" autocomplete="off">
+          <div>
+            <label for="flightFrom">From</label>
+            <input type="text" id="flightFrom" name="from" placeholder="City or Airport" required aria-required="true" />
+          </div>
+          <div>
+            <label for="flightTo">To</label>
+            <input type="text" id="flightTo" name="to" placeholder="City or Airport" required aria-required="true" />
+          </div>
+          <div>
+            <label for="flightDepart">Departure Date</label>
+            <input type="date" id="flightDepart" name="departure" required aria-required="true" />
+          </div>
+          <div>
+            <label for="flightReturn">Return Date (optional)</label>
+            <input type="date" id="flightReturn" name="return" />
+          </div>
+          <div>
+            <label for="flightPassengers">Passengers</label>
+            <input type="number" id="flightPassengers" name="passengers" min="1" max="9" value="1" required aria-required="true" />
+          </div>
+          <button type="submit">Pay with Stripe</button>
+          <div id="paymentMessage" role="alert" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+
+    <div id="hotel-panel" role="tabpanel" tabindex="0" hidden>
+      <div class="form-container">
+        <h2>Hotel Booking</h2>
+        <form id="hotelForm" aria-label="Hotel booking form" autocomplete="off">
+          <div>
+            <label for="hotelLocation">Destination</label>
+            <input type="text" id="hotelLocation" name="location" placeholder="City or Hotel Name" required aria-required="true" />
+          </div>
+          <div>
+            <label for="hotelCheckin">Check-in Date</label>
+            <input type="date" id="hotelCheckin" name="checkin" required aria-required="true" />
+          </div>
+          <div>
+            <label for="hotelCheckout">Check-out Date</label>
+            <input type="date" id="hotelCheckout" name="checkout" required aria-required="true" />
+          </div>
+          <div>
+            <label for="hotelGuests">Guests</label>
+            <input type="number" id="hotelGuests" name="guests" min="1" max="10" value="1" required aria-required="true" />
+          </div>
+          <button type="submit">Pay with Stripe</button>
+          <div id="paymentMessageHotel" role="alert" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  // Tab switching logic
+  const tabs = document.querySelectorAll('[role="tab"]');
+  const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Deactivate all tabs and panels
+      tabs.forEach(t => {
+        t.setAttribute('aria-selected', 'false');
+        t.tabIndex = -1;
+      });
+      tabPanels.forEach(panel => panel.hidden = true);
+
+      // Activate clicked tab and panel
+      tab.setAttribute('aria-selected', 'true');
+      tab.tabIndex = 0;
+      const controls = tab.getAttribute('aria-controls');
+      document.getElementById(controls).hidden = false;
+      document.getElementById(controls).focus();
+    });
+
+    tab.addEventListener('keydown', e => {
+      let index = Array.prototype.indexOf.call(tabs, e.currentTarget);
+      if(e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        if(e.key === 'ArrowRight') {
+          index = (index + 1) % tabs.length;
+        } else {
+          index = (index - 1 + tabs.length) % tabs.length;
+        }
+        tabs[index].focus();
+      }
+    });
+  });
+
+  // Stripe public test key (replace with your own key)
+  const stripe = Stripe('pk_test_XXXXXXXXXXXXXXXXXXXXXXXX'); // Replace with your Stripe publishable key
+
+  // Function to simulate payment processing for demo
+  function simulateStripePayment(formId, messageId) {
+    const paymentMessageEl = document.getElementById(messageId);
+    paymentMessageEl.textContent = '';
+    paymentMessageEl.className = '';
+
+    // Normally here you'd create a payment intent on your backend and confirm card payment
+    // This demo just simulates success after 2 seconds
+    paymentMessageEl.textContent = 'Processing Payment...';
+    setTimeout(() => {
+      // Random success or failure simulation
+      const success = Math.random() > 0.2;
+      if(success){
+        paymentMessageEl.textContent = 'Payment Successful! Thank you for booking.';
+        paymentMessageEl.className = 'success';
+      } else {
+        paymentMessageEl.textContent = 'Payment failed. Please try again.';
+        paymentMessageEl.className = 'error';
+      }
+    }, 2000);
+  }
+
+  // Flight form payment submission handler
+  document.getElementById('flightForm').addEventListener('submit', event => {
+    event.preventDefault();
+    // Form validation handled by browser for required fields
+    simulateStripePayment('flightForm', 'paymentMessage');
+  });
+
+  // Hotel form payment submission handler
+  document.getElementById('hotelForm').addEventListener('submit', event => {
+    event.preventDefault();
+    simulateStripePayment('hotelForm', 'paymentMessageHotel');
+  });
+</script>
+
+</body>
+</html>
+

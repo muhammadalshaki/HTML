@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Brand Landing Page - Modern Tech & Gaming</title>
+
+<!-- Google Fonts for English (Poppins) and Arabic (Cairo) -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --color-bg: #ffffff;
+    --color-text-base: #374151;
+    --color-text-muted: #6b7280;
+    --color-primary: #7c3aed; /* purple neon accent */
+    --color-primary-dark: #5b21b6;
+    --color-card-bg: #f9fafb;
+    --color-shadow: rgba(124, 58, 237, 0.1);
+    --color-shadow-hover: rgba(124, 58, 237, 0.3);
+
+    --font-english: 'Poppins', sans-serif;
+    --font-arabic: 'Cairo', sans-serif;
+
+    --radius: 0.75rem;
+    --transition-duration: 0.3s;
+    --max-width: 1200px;
+  }
+
+  /* Reset and Base styles */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-english);
+    background: var(--color-bg);
+    color: var(--color-text-base);
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Arabic font set on [lang="ar"] */
+  [lang="ar"] body, [lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3, [lang="ar"] p, [lang="ar"] nav, [lang="ar"] button {
+    font-family: var(--font-arabic);
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-duration);
+  }
+  a:hover,
+  a:focus {
+    color: var(--color-primary-dark);
+    outline: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Container */
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* Sticky Header */
+  header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: var(--color-bg);
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    z-index: 1000;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    user-select: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-links li {
+    font-weight: 600;
+  }
+
+  .nav-links a {
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+  }
+  .nav-links a:hover,
+  .nav-links a:focus {
+    background-color: var(--color-primary);
+    color: white;
+    outline: none;
+  }
+
+  /* Language toggle button */
+  .lang-toggle {
+    background: var(--color-primary);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color var(--transition-duration);
+  }
+  .lang-toggle:hover,
+  .lang-toggle:focus {
+    background-color: var(--color-primary-dark);
+    outline: none;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .hero p {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: background-color var(--transition-duration), box-shadow var(--transition-duration);
+    box-shadow: 0 0 10px var(--color-shadow);
+    user-select: none;
+  }
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background-color: var(--color-primary-dark);
+    box-shadow: 0 0 20px var(--color-shadow-hover);
+    outline: none;
+  }
+
+  /* Features Section */
+  .features {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 2rem;
+  }
+
+  .feature-card {
+    background: var(--color-card-bg);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 4px 12px var(--color-shadow);
+    transition: box-shadow var(--transition-duration), transform var(--transition-duration);
+  }
+  .feature-card:hover,
+  .feature-card:focus-within {
+    box-shadow: 0 8px 24px var(--color-shadow-hover);
+    transform: translateY(-5px);
+    outline: none;
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .feature-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary-dark);
+  }
+
+  .feature-desc {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  /* Vision Section */
+  .vision {
+    background: var(--color-card-bg);
+    padding: 4rem 2rem;
+    border-radius: var(--radius);
+    margin: 3rem 0;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 15px var(--color-shadow);
+    text-align: center;
+  }
+
+  .vision h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-primary-dark);
+  }
+  .vision p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .hero h1 {
+      font-size: 2.5rem;
+      padding: 0 1rem;
+    }
+    .hero p {
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+  }
+
+</style>
+</head>
+<body lang="en">
+
+<header>
+  <div class="container" role="banner">
+    <nav aria-label="Primary navigation">
+      <div class="logo" tabindex="0">TechBrand</div>
+      <ul class="nav-links" role="menu">
+        <li role="none"><a href="#products" role="menuitem" tabindex="0">Products</a></li>
+        <li role="none"><a href="#vision" role="menuitem" tabindex="0">Vision</a></li>
+      </ul>
+      <button class="lang-toggle" aria-label="Switch Language" id="langToggleBtn">عربي</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-label="Hero Section">
+    <div class="container">
+      <h1 id="headline">Build Your Future with TechBrand</h1>
+      <p id="subtext">Innovative gaming and tech solutions designed to elevate your experience.</p>
+      <button class="btn-primary" id="ctaButton">Get Started</button>
+    </div>
+  </section>
+
+  <section class="features" aria-label="Products Section" id="products">
+    <div class="container">
+      <h2 id="productsTitle">Our Products</h2>
+      <div class="features-grid">
+        <article class="feature-card" tabindex="0" aria-labelledby="feature1Title" aria-describedby="feature1Desc">
+          <div class="feature-icon" aria-hidden="true">🎮</div>
+          <h3 class="feature-title" id="feature1Title">Advanced Gaming Gear</h3>
+          <p class="feature-desc" id="feature1Desc">
+            High-performance peripherals designed for pro gamers and enthusiasts.
+          </p>
+        </article>
+        <article class="feature-card" tabindex="0" aria-labelledby="feature2Title" aria-describedby="feature2Desc">
+          <div class="feature-icon" aria-hidden="true">🖥️</div>
+          <h3 class="feature-title" id="feature2Title">Custom PCs</h3>
+          <p class="feature-desc" id="feature2Desc">
+            Tailored builds combining power and style for every kind of user.
+          </p>
+        </article>
+        <article class="feature-card" tabindex="0" aria-labelledby="feature3Title" aria-describedby="feature3Desc">
+          <div class="feature-icon" aria-hidden="true">⚙️</div>
+          <h3 class="feature-title" id="feature3Title">Tech Services</h3>
+          <p class="feature-desc" id="feature3Desc">
+            Expert tech support and consulting to keep you ahead of the game.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="vision" aria-label="Brand Vision Section" id="vision" tabindex="0">
+    <h2 id="visionTitle">Our Vision</h2>
+    <p id="visionDesc">
+      To be the ultimate destination for gamers and tech enthusiasts seeking cutting-edge solutions that inspire creativity and performance.
+    </p>
+  </section>
+</main>
+
+<script>
+  // Language content for English and Arabic
+  const content = {
+    en: {
+      lang: "en",
+      dir: "ltr",
+      navProducts: "Products",
+      navVision: "Vision",
+      langToggleLabel: "Switch Language",
+      langToggleText: "عربي",
+      headline: "Build Your Future with TechBrand",
+      subtext: "Innovative gaming and tech solutions designed to elevate your experience.",
+      ctaButton: "Get Started",
+      productsTitle: "Our Products",
+      features: [
+        {
+          icon: "🎮",
+          title: "Advanced Gaming Gear",
+          desc: "High-performance peripherals designed for pro gamers and enthusiasts."
+        },
+        {
+          icon: "🖥️",
+          title: "Custom PCs",
+          desc: "Tailored builds combining power and style for every kind of user."
+        },
+        {
+          icon: "⚙️",
+          title: "Tech Services",
+          desc: "Expert tech support and consulting to keep you ahead of the game."
+        }
+      ],
+      visionTitle: "Our Vision",
+      visionDesc: "To be the ultimate destination for gamers and tech enthusiasts seeking cutting-edge solutions that inspire creativity and performance."
+    },
+    ar: {
+      lang: "ar",
+      dir: "rtl",
+      navProducts: "منتجاتنا",
+      navVision: "رؤيتنا",
+      langToggleLabel: "تبديل اللغة",
+      langToggleText: "English",
+      headline: "ابنِ مستقبلك مع تك براند",
+      subtext: "حلول تقنية وألعاب مبتكرة لرفع تجربتك لأعلى مستويات.",
+      ctaButton: "ابدأ الآن",
+      productsTitle: "منتجاتنا",
+      features: [
+        {
+          icon: "🎮",
+          title: "معدات ألعاب متطورة",
+          desc: "ملحقات عالية الأداء مصممة للاعبين المحترفين والهواة."
+        },
+        {
+          icon: "🖥️",
+          title: "الحواسيب المخصصة",
+          desc: "تجميعات مخصصة تجمع بين القوة والأناقة لكل المستخدمين."
+        },
+        {
+          icon: "⚙️",
+          title: "خدمات تقنية",
+          desc: "دعم تقني واستشارات خبيرة لتبقى متقدمًا دائمًا."
+        }
+      ],
+      visionTitle: "رؤيتنا",
+      visionDesc: "أن نكون الوجهة الأولى للاعبين ومحبي التقنية الباحثين عن حلول مبتكرة تلهم الإبداع والأداء."
+    }
+  };
+
+  const langToggleBtn = document.getElementById('langToggleBtn');
+  const htmlEl = document.documentElement;
+
+  function updateContent(lang) {
+    const current = content[lang];
+    // Update lang & dir attributes on html and body
+    htmlEl.lang = current.lang;
+    htmlEl.dir = current.dir;
+    document.body.lang = current.lang;
+    document.body.dir = current.dir;
+
+    // If Arabic, change font family to Arabic font
+    document.body.style.fontFamily = lang === 'ar' ? 'Cairo, sans-serif' : 'Poppins, sans-serif';
+
+    // Update nav links
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks[0].textContent = current.navProducts;
+    navLinks[1].textContent = current.navVision;
+
+    // Update lang toggle button text and label
+    langToggleBtn.textContent = current.langToggleText;
+    langToggleBtn.setAttribute('aria-label', current.langToggleLabel);
+
+    // Update hero section
+    document.getElementById('headline').textContent = current.headline;
+    document.getElementById('subtext').textContent = current.subtext;
+    document.getElementById('ctaButton').textContent = current.ctaButton;
+
+    // Update products title
+    document.getElementById('productsTitle').textContent = current.productsTitle;
+
+    // Update features cards
+    const featureCards = document.querySelectorAll('.feature-card');
+    current.features.forEach((feature, i) => {
+      if (featureCards[i]) {
+        featureCards[i].querySelector('.feature-icon').textContent = feature.icon;
+        featureCards[i].querySelector('.feature-title').textContent = feature.title;
+        featureCards[i].querySelector('.feature-desc').textContent = feature.desc;
+      }
+    });
+
+    // Update vision section
+    document.getElementById('visionTitle').textContent = current.visionTitle;
+    document.getElementById('visionDesc').textContent = current.visionDesc;
+  }
+
+  // Initial load language english
+  let currentLang = 'en';
+  updateContent(currentLang);
+
+  langToggleBtn.addEventListener('click', () => {
+    currentLang = (currentLang === 'en') ? 'ar' : 'en';
+    updateContent(currentLang);
+  });
+</script>
+
+</body>
+</html>
+
